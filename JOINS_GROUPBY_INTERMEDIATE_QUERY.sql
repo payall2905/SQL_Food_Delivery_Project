@@ -34,3 +34,12 @@ INNER JOIN restaurant_project.orders_medium AS T2
 ON T1.order_id = T2.order_id
 GROUP BY T2.restaurant_id
 order by TOTAL_REVENUE desc;
+
+-- WHICH CUSTOMERS HAVE PLACED THE MOST ORDERS?
+SELECT T2.customer_id, COUNT(T2.order_id) AS MOST_ORDERS 
+from restaurant_project.customers_medium AS T1
+INNER JOIN restaurant_project.orders_medium AS T2
+ON T1.customer_id = T2.customer_id
+group by T2.customer_id
+order by MOST_ORDERS desc
+LIMIT 1;
