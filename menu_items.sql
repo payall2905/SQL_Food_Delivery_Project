@@ -1,0 +1,13 @@
+SELECT * FROM restaurant_project.menu_items;
+
+-- HOW MANY MENU ITEMS ARE AVAILABLE?
+SELECT COUNT(item_id) AS TOTAL_ITEMS FROM restaurant_project.menu_items;
+
+-- FIND THE TOP 10 MOST EXPENSIVE MENU ITEMS?
+SELECT * FROM restaurant_project.menu_items ORDER BY PRICE DESC LIMIT 10;
+
+-- FIND THE CHEAPEST MENU ITEMS?
+SELECT * FROM restaurant_project.menu_items ORDER BY PRICE ASC LIMIT 1;
+
+-- FIND THE AVERAGE PRICE OF MENU ITEMS?
+SELECT AVG(PRICE) AS AVERAGE_PRICE_oF_MENU FROM restaurant_project.menu_items;
