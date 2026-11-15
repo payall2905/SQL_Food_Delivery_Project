@@ -43,3 +43,20 @@ ON T1.customer_id = T2.customer_id
 group by T2.customer_id
 order by MOST_ORDERS desc
 LIMIT 1;
+
+-- CALCULATE THE AVERAGE ORDER VALUE FOR EACH RESTAURANT?
+SELECT avg(T1.ORDER_VALUE) AS AVERAGE_ORDER, T2.restaurant_id 
+FROM (SELECT ORDER_ID, SUM(PRICE) AS ORDER_VALUE 
+FROM restaurant_project.`order_items (2)` GROUP BY ORDER_ID) AS T1
+inner join restaurant_project.orders_medium AS T2
+ON T1.order_id = T2.order_id
+GROUP BY T2.restaurant_id;
+
+-- WHICH MENU ITEMS GENERATE THE HIGHEST REVEUNE?
+SELECT T2.item_id, SUM(T1.price) AS HIGHEST_REVEUNE 
+FROM restaurant_project.menu_items AS T1
+INNER JOIN restaurant_project.`order_items (2)` AS T2
+ON T1.item_id= T2.item_id
+GROUP BY T2.item_id
+ORDER BY HIGHEST_REVEUNE DESC 
+LIMIT 1;
